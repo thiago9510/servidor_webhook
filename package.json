@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "start": "npx sucrase-node ./src/server.ts",
+    "build": "tsc",
+    "startjs": "node dist/server.js",
+    "dev": "tsc && node dist/server.js",
+    "migration:generatejs": "typeorm -d ./dist/database/connection.js migration:generate ./dist/database/migrations/default",
+    "migration:create": "typeorm migration:create ./src/database/migrations/migration",
+    "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/database/connection.ts",
+    "migration:generate": "ts-node ./node_modules/typeorm/cli.js -d ./src/database/connection.ts migration:generate ./src/database/migrations/default",
+    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/database/connection.ts",
+    "migration:show": "ts-node ./node_modules/typeorm/cli.js migration:show -d ./src/database/connection.ts",
+    "migration:sync": "ts-node ./node_modules/typeorm/cli.js migration:sync -d ./src/database/connection.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
